@@ -4,12 +4,12 @@
  $d=date("d.m.Y H:i");
  echo($d);
 ?>
-<BODY BGCOLOR="#FFFAFA">
-<p><b><CENTER><FONT SIZE="+20"><font color="#EB5284">♥ Колесова Валерия ПИ-322 ♥</font></b></p></FONT></CENTER>
-<CENTER><font color="#4B0082"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 1 ♥</p></I></FONT></font></CENTER>
+<BODY BACKGROUND="https://www.centrecommercial-roques.com/img/adopt-1920.jpg">
+<p><b><CENTER><FONT SIZE="+20"><font color="#F8F8FF">♥ Колесова Валерия ПИ-322 ♥</font></b></p></FONT></CENTER>
+<CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 1 ♥</p></I></FONT></font></CENTER>
 
 <CENTER>
-<font color="#BC8F8F">
+<font color="#FF1493">
 <li>
 <a href='/lab-1-1.php'>Упражнение 1-2</a>
 </li>
