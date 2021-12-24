@@ -23,6 +23,9 @@
 <a href='/lab-1-5.php'>Задача №1-1</a>
 </li>
 <li>
+<a href='/lab-1-5-1.php'>Задача №1-1(2)</a>
+</li>
+<li>
 <a href='/lab-2-1.php'>Упражнение 1-6</a>
 </li>
 <li>
@@ -54,6 +57,9 @@
 </li>
 <li>
 <a href='/lab-2-11.php'>Задача № 1-3</a>
+</li>
+<li>
+<a href='/lab-1-5-2.php'>Задача № 1-3(2)</a>
 </li>
 <CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 2 ♥</p></I></FONT></font></CENTER>
 <li>
