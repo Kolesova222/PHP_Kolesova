@@ -1,0 +1,15 @@
+<p> Колесова Валерия ПИ-322 </p>
+<DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<FORM method="post" action="lab-3-1-1.php">
+a: <INPUT type="text" name="a" size="3">
+
+b: <INPUT type="text" name="b" size="3">
+ <P> <INPUT type="submit" value="Сравнить">
+ </FORM>
+ </body>
+ </html>

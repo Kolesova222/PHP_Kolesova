@@ -80,5 +80,30 @@
 <li>
 <a href='/lab-2-2-6.php'>Задача № 2.6</a>
 </li>
+<CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 3 ♥</p></I></FONT></font></CENTER>
+<li>
+<a href='/lab-3-1.php'>Упражнение 3-1</a>
+</li>
+<li>
+<a href='/lab-3-2.php'>Упражнение 3-2</a>
+</li>
+<li>
+<a href='/lab-3-3.php'>Упражнение 3-3</a>
+</li>
+<li>
+<a href='/lab-3-4.php'>Упражнение 3-4</a>
+</li>
+<li>
+<a href='/lab-3-5.php'>Упражнение 3-5</a>
+</li>
+<li>
+<a href='/lab-3-6.2.php'>Упражнение 3-6(2)</a>
+</li>
+<li>
+<a href='/lab-3-6.5.php'>Упражнение 3-6(5)</a>
+</li>
+<li>
+<a href='/lab-3-6.8.php'>Упражнение 3-6(7)</a>
+</li>
 </font>
 </CENTER>
