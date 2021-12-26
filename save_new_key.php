@@ -1,4 +1,5 @@
 <?php
+include ("checks.php");
 require_once 'connect1.php';
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
@@ -21,9 +22,15 @@ $result = $mysqli->query("INSERT INTO dkey
 
 if ($result) {
     print "<p>Внесение данных прошло успешно!";
-    print "<p><a href='key.php'> Вернуться к списку </a>";
+    if ($_SESSION['type'] == 1)
+        echo "<p><a href=key.php> Вернуться к списку </a>";
+    elseif ($_SESSION['type'] == 2)
+        echo ".<p><a href=keyAdm.php> Вернуться к списку </a>";
 } else {
-    print "Ошибка сохранения <a href='key.php'> Вернуться к списку </a>";
+    if ($_SESSION['type'] == 1)
+        echo "Ошибка сохранения . <p><a href=key.php> Вернуться к списку </a>";
+    elseif ($_SESSION['type'] == 2)
+        echo "Ошибка сохранения . <p><a href=keyAdm.php> Вернуться к списку </a>";
 }
-
+mysqli_close($mysqli);
 ?>

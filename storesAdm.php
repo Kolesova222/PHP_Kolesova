@@ -8,6 +8,7 @@
         <th>название</th>
         <th>url</th>
         <th>Редактировать</th>
+        <th>Уничтожить</th>
     </tr>
     </tr>
     <?php
@@ -25,6 +26,8 @@
         echo "<td>" . $row['url'] . "</td>";
         echo "<td><a href='edit_store.php?id_digital=" . $row['id_digital']
             . "'>Редактировать</a></td>"; // запуск скрипта для редактирования
+        echo "<td><a href='delete_store.php?id_digital=" . $row['id_digital']
+            . "'>Удалить</a></td>"; // запуск скрипта для удаления записи
         echo "</tr>";
     }
     print "</table>";

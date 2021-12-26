@@ -12,6 +12,7 @@
         <th> стоимость</th>
         <th> ключ</th>
         <th> Редактировать</th>
+        <th> Уничтожить</th>
     </tr>
     </tr>
     <?php
@@ -45,6 +46,8 @@ LEFT JOIN digital ON dkey.id_digital=digital.id_digital"); // запрос на 
 
             echo "<td><a href='edit_key.php?id=" . $row['id']
                 . "'>Редактировать</a></td>"; //Запуск редактирования
+            echo "<td><a href='delete_key.php?id=" . $row['id']
+                . "'>Удалить</a></td>"; //запуск удаления
             echo "</tr>";
             $counter++;
         }

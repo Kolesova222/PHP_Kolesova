@@ -4,12 +4,13 @@
 <H2>Добавление нового ключа:</H2>
 <form action="save_new_key.php" method="get">
     <?php
+    include ("checks.php");
     require_once 'connect1.php';
     $mysqli = new mysqli($host, $user, $password, $database);
     if ($mysqli->connect_errno) {
         echo "Невозможно подключиться к серверу";
     }
-    //id
+
     $result = $mysqli->query("SELECT id_operation, name_os FROM operation");
     echo "<br>ОС: <select name='id_operation'>";
 
@@ -38,12 +39,13 @@
     print "<br> дата окончания: <input name='date_ex' placeholder='dd-mm-yyyy' type='date' value=$date_ex>";
     print "<br> стоимость: <input name='price' size='11' type='int' value=$price>";
     print "<br> ключ: <input name='key_os' size='11' type='int'value=$key_os>";
+    echo "<p><input name='add' type='submit' value='Добавить'></p>";
+    echo "<p><input name='b2' type='reset' value='Очистить'></p>";
+    if ($_SESSION['type'] == 1)
+        echo "<p><a href=key.php> Вернуться к списку ключей </a></p>";
+    elseif ($_SESSION['type'] == 2)
+        echo "<p><a href=keyAdm.php> Вернуться к списку ключей </a></p>";
     ?>
-
-
-    <p><input name="add" type="submit" value="Добавить">
-        <input name="b2" type="reset" value="Очистить"></p>
-    <p><a href="key.php"> Вернуться к списку ключей </a>
 </form>
 </body>
 </html>

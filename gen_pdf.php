@@ -1,4 +1,5 @@
 <?php
+include("checks.php");
 require('tfpdf/tfpdf.php');
 require_once 'connect1.php';
 $mysqli = new mysqli($host, $user, $password, $database);
@@ -18,8 +19,8 @@ $pdf->Ln(20);
 $pdf->SetFillColor(200, 200, 200);
 $pdf->SetFontSize(6);
 
-$header = array("п/п", "Название", "Тип оборудования", "Разрядность", "Разработчик", "Цифровой ключ", "Дата приобретения", "Дата окончания", "url");
-$w = array(6, 20, 25, 20, 20, 20, 20, 17, 20);
+$header = array("п/п", "Название", "Тип оборудования", "Разрядность", "Разработчик", "Цифровой ключ", "Дата приобретения", "Дата окончания", "URL магазина");
+$w = array(6, 20, 25, 20, 30, 30, 20, 20, 25);
 $h = 20;
 for ($c = 0; $c < 9; $c++) {
     $pdf->Cell($w[$c], $h, $header[$c], 'LRTB', '0', '', true);
@@ -59,5 +60,5 @@ if ($result) {
     }
 }
 
-$pdf->Output("I", 'operation.pdf', true);
+$pdf->Output("I", 'OS.pdf', true);
 ?>

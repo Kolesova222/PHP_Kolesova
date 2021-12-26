@@ -1,50 +1,51 @@
-<html>
-<head><title> Сведения об ОС </title></head>
+<!DOCTYPE html>
+<html lang="en">
 <body>
-<h2>Сведения об ОС:</h2>
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Название</th>
-        <th> Тип оборудования</th>
-        <th> Разрядность</th>
-        <th> Разработчик</th>
-        <th> Количество пользователей</th>
-        <th> Редактировать</th>
-        <th> Уничтожить</th>
-    </tr>
-    </tr>
-    <?php
-    require_once 'connect1.php';
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+    <h2>Авторизация</h2>
+    Введите Логин: <input type="text" name="user"> <br>
+    Введите Пароль: <input type="password" name="pass"> <br>
+    <input type="submit" name="come" value="Войти"> <br>
+    <input type="reset" name="reset" value="Очистить"> <br>
+</form>
+<?php
+require_once 'connect1.php';
+if (isset($_POST["come"])) {
     $link = mysqli_connect($host, $user, $password, $database) or die ("Невозможно
 подключиться к серверу" . mysqli_error($link));
-    $result = mysqli_query($link, "SELECT id_operation, name_os, type_os, x_os, dev_os, count_us
-FROM operation"); // запрос на выборку сведений о пользователях
-    mysqli_select_db($link, "operation");
+    $user = $link->query("SELECT id_u, username, password, type FROM users");
+    // Ввод
+    $username = $_POST["user"];
+    $password = $_POST["pass"];
+    // Для индитификации входа
+    $errFlag = false;
+    // Проверка вводимых данных
+    while ($data = mysqli_fetch_array($user)) {
+        $usernameBD = $data['username'];
+        $passwordBD = $data['password'];
+        $typeBD = $data['type'];
+        $idUserBD = $data['id_u'];
 
-    while ($row = mysqli_fetch_array($result)) {// для каждой строки из запроса
-        echo "<tr>";
-        echo "<td>" . $row['id_operation'] . "</td>";
-        echo "<td>" . $row['name_os'] . "</td>";
-        echo "<td>" . $row['type_os'] . "</td>";
-        echo "<td>" . $row['x_os'] . "</td>";
-        echo "<td>" . $row['dev_os'] . "</td>";
-        echo "<td>" . $row['count_us'] . "</td>";
-        echo "<td><a href='edit_os.php?id_operation=" . $row['id_operation']
-            . "'>Редактировать</a></td>"; // запуск скрипта для редактирования
-        echo "<td><a href='delete_os.php?id_operation=" . $row['id_operation']
-            . "'>Удалить</a></td>"; // запуск скрипта для удаления записи
-        echo "</tr>";
+        if ($username === $usernameBD && md5($password) === $passwordBD) {
+            $errFlag = true;
+            session_start();
+            $_SESSION['type'] = $typeBD;
+            $_SESSION['id_u'] = $idUserBD;
+            break;
+        } else
+            $errFlag = false;
     }
-    print "</table>";
-    $num_rows = mysqli_num_rows($result); // число записей в таблице БД
-    print("<P>Всего ОС: $num_rows </p>");
-    ?>
-    <p><a href="new_os.php"> Добавить ОС </a>
-    <p><a href="key.php">Ключи</a>
-    <p><a href="stores.php">Магазины</a>
-    <p><a href="gen_pdf.php">Скачать pdf-файл</a>
-    <p><a href="gen_xls.php">Скачать xls-файл</a>
-    <li><a href="../index.php">Главная страница</a></li>
+
+    if ($errFlag && $_SESSION['type'] == 1)
+        header("Refresh:0; url=os.php");
+    elseif ($errFlag && $_SESSION['type'] == 2)
+        header("Refresh:0; url=osAdm.php");
+    else
+        echo "Логин или пароль введен не верно";
+
+}
+?>
+<br>
+<li><a href="../index.php">Главная страница</a></li>
 </body>
 </html>

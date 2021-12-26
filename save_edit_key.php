@@ -1,6 +1,7 @@
 <html>
 <body>
 <?php
+include("checks.php");
 require_once 'connect1.php';
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
@@ -19,11 +20,16 @@ $result = $mysqli->query("UPDATE dkey SET date_buy='$date_buy', date_ex='$date_e
 id_operation='$id_operation', id_digital='$id_digital', price='$price', key_os='$key_os'
 WHERE id='$id'");
 
-
 if ($result) {
-    echo 'Все сохранено. <a href="key.php"> Вернуться к списку ключей </a>';
+    if ($_SESSION['type'] == 1)
+        echo "Все сохранено.<p><a href=key.php> Вернуться к списку ключей </a>";
+    elseif ($_SESSION['type'] == 2)
+        echo "Все сохранено.<p><a href=keyAdm.php> Вернуться к списку ключей </a>";
 } else {
-    echo 'Ошибка сохранения. <a href="key.php">Вернуться к списку ключей</a> ';
+    if ($_SESSION['type'] == 1)
+        echo "Ошибка сохранения. <p></p><a href=key.php> Вернуться к списку ключей </a>";
+    elseif ($_SESSION['type'] == 2)
+        echo "Ошибка сохранения. <p><a href=keyAdm.php> Вернуться к списку ключей </a>";
 }
 ?>
 </body>

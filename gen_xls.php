@@ -1,7 +1,9 @@
 <?php
+include("checks.php");
+require_once 'connect1.php';
 require_once('php_excel/Classes/PHPExcel.php');
 require_once('php_excel/Classes/PHPExcel/Writer/Excel2007.php');
-require_once 'connect1.php';
+
 $mysqli = new mysqli($host, $user, $password, $database);
 if ($mysqli->connect_errno) {
     echo "Не удалось подключиться к БД";
@@ -69,7 +71,7 @@ if ($result) {
 }
 
 header('Content-Type: application/xls');
-header('Content-Disposition: inline; filename=operation.xls');
+header('Content-Disposition: inline; filename=OS.xls');
 header('Cache-Control: private, max-age=0, must-revalidate');
 header('Pragma: public');
 
