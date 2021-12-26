@@ -1,109 +1,50 @@
-<p> Дата и время:
-<p>
-<?php
- $d=date("d.m.Y H:i");
- echo($d);
-?>
-<BODY BACKGROUND="https://www.centrecommercial-roques.com/img/adopt-1920.jpg">
-<p><b><CENTER><FONT SIZE="+20"><font color="#F8F8FF">♥ Колесова Валерия ПИ-322 ♥</font></b></p></FONT></CENTER>
-<CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 1 ♥</p></I></FONT></font></CENTER>
+<html>
+<head><title> Сведения об ОС </title></head>
+<body>
+<h2>Сведения об ОС:</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th> Тип оборудования</th>
+        <th> Разрядность</th>
+        <th> Разработчик</th>
+        <th> Количество пользователей</th>
+        <th> Редактировать</th>
+        <th> Уничтожить</th>
+    </tr>
+    </tr>
+    <?php
+    require_once 'connect1.php';
+    $link = mysqli_connect($host, $user, $password, $database) or die ("Невозможно
+подключиться к серверу" . mysqli_error($link));
+    $result = mysqli_query($link, "SELECT id_operation, name_os, type_os, x_os, dev_os, count_us
+FROM operation"); // запрос на выборку сведений о пользователях
+    mysqli_select_db($link, "operation");
 
-<CENTER>
-<font color="#FF1493">
-<li>
-<a href='/lab-1-1.php'>Упражнение 1-2</a>
-</li>
-<li>
-<a href='/lab-1-2.php'>Упражнение 1-3</a>
-</li>
-<li>
-<a href='/lab-1-3.php'>Упражнение 1-4</a>
-</li>
-<li>
-<a href='/lab-1-5.php'>Задача №1-1</a>
-</li>
-<li>
-<a href='/lab-1-5-1.php'>Задача №1-1(2)</a>
-</li>
-<li>
-<a href='/lab-2-1.php'>Упражнение 1-6</a>
-</li>
-<li>
-<a href='/lab-2-2.php'>Упражнение 1-7</a>
-</li>
-<li>
-<a href='/lab-2-3.php'>Упражнение 1-8</a>
-</li>
-<li>
-<a href='/lab-2-4.php'>Упражнение 1-9</a>
-</li>
-<li>
-<a href='/lab-2-5.php'>Упражнение 1-10</a>
-</li>
-<li>
-<a href='/lab-2-6.php'>Упражнение 1-11</a>
-</li>
-<li>
-<a href='/lab-2-7.php'>Упражнение 1-12</a>
-</li>
-<li>
-<a href='/lab-2-8.php'>Упражнение 1-13</a>
-</li>
-<li>
-<a href='/lab-2-9.php'>Упражнение 1-14</a>
-</li> 
-<li>
-<a href='/lab-2-10.php'>Задача № 1-2</a>
-</li>
-<li>
-<a href='/lab-2-11.php'>Задача № 1-3</a>
-</li>
-<li>
-<a href='/lab-1-5-2.php'>Задача № 1-3(2)</a>
-</li>
-<CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 2 ♥</p></I></FONT></font></CENTER>
-<li>
-<a href='/lab-2-2-1.php'>Задание № 2-1</a>
-</li>
-<li>
-<a href='/lab-2-2-2.php'>Задание № 2-2</a>
-</li>
-<li>
-<a href='/lab-2-2-3.php'>Задание № 2-3</a>
-</li>
-<li>
-<a href='/lab-2-2-4.php'>Задача № 2.4</a>
-</li>
-<li>
-<a href='/lab-2-2-5.php'>Задача № 2.5</a>
-</li>
-<li>
-<a href='/lab-2-2-6.php'>Задача № 2.6</a>
-</li>
-<CENTER><font color="#FFF0F5"><FONT SIZE="+2"><I><p>♥ Лабораторная работа 3 ♥</p></I></FONT></font></CENTER>
-<li>
-<a href='/lab-3-1.php'>Упражнение 3-1</a>
-</li>
-<li>
-<a href='/lab-3-2.php'>Упражнение 3-2</a>
-</li>
-<li>
-<a href='/lab-3-3.php'>Упражнение 3-3</a>
-</li>
-<li>
-<a href='/lab-3-4.php'>Упражнение 3-4</a>
-</li>
-<li>
-<a href='/lab-3-5.php'>Упражнение 3-5</a>
-</li>
-<li>
-<a href='/lab-3-6.2.php'>Упражнение 3-6(2)</a>
-</li>
-<li>
-<a href='/lab-3-6.5.php'>Упражнение 3-6(5)</a>
-</li>
-<li>
-<a href='/lab-3-6.8.php'>Упражнение 3-6(7)</a>
-</li>
-</font>
-</CENTER>
+    while ($row = mysqli_fetch_array($result)) {// для каждой строки из запроса
+        echo "<tr>";
+        echo "<td>" . $row['id_operation'] . "</td>";
+        echo "<td>" . $row['name_os'] . "</td>";
+        echo "<td>" . $row['type_os'] . "</td>";
+        echo "<td>" . $row['x_os'] . "</td>";
+        echo "<td>" . $row['dev_os'] . "</td>";
+        echo "<td>" . $row['count_us'] . "</td>";
+        echo "<td><a href='edit_os.php?id_operation=" . $row['id_operation']
+            . "'>Редактировать</a></td>"; // запуск скрипта для редактирования
+        echo "<td><a href='delete_os.php?id_operation=" . $row['id_operation']
+            . "'>Удалить</a></td>"; // запуск скрипта для удаления записи
+        echo "</tr>";
+    }
+    print "</table>";
+    $num_rows = mysqli_num_rows($result); // число записей в таблице БД
+    print("<P>Всего ОС: $num_rows </p>");
+    ?>
+    <p><a href="new_os.php"> Добавить ОС </a>
+    <p><a href="key.php">Ключи</a>
+    <p><a href="stores.php">Магазины</a>
+    <p><a href="gen_pdf.php">Скачать pdf-файл</a>
+    <p><a href="gen_xls.php">Скачать xls-файл</a>
+    <li><a href="../index.php">Главная страница</a></li>
+</body>
+</html>
